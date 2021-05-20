@@ -29,27 +29,27 @@ namespace Uzduotis4
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.userTxtBox = new System.Windows.Forms.TextBox();
+            this.pwTxtBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.regBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // userTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(126, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 23);
-            this.textBox1.TabIndex = 0;
+            this.userTxtBox.Location = new System.Drawing.Point(126, 55);
+            this.userTxtBox.Name = "userTxtBox";
+            this.userTxtBox.Size = new System.Drawing.Size(169, 23);
+            this.userTxtBox.TabIndex = 0;
             // 
-            // textBox2
+            // pwTxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 84);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 23);
-            this.textBox2.TabIndex = 1;
+            this.pwTxtBox.Location = new System.Drawing.Point(126, 84);
+            this.pwTxtBox.Name = "pwTxtBox";
+            this.pwTxtBox.Size = new System.Drawing.Size(169, 23);
+            this.pwTxtBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -70,37 +70,39 @@ namespace Uzduotis4
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
             // 
-            // button1
+            // loginBtn
             // 
-            this.button1.Location = new System.Drawing.Point(126, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.loginBtn.Location = new System.Drawing.Point(126, 129);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(75, 23);
+            this.loginBtn.TabIndex = 4;
+            this.loginBtn.Text = "Login";
+            this.loginBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // regBtn
             // 
-            this.button2.Location = new System.Drawing.Point(207, 129);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Register";
-            this.button2.UseVisualStyleBackColor = true;
+            this.regBtn.Location = new System.Drawing.Point(207, 129);
+            this.regBtn.Name = "regBtn";
+            this.regBtn.Size = new System.Drawing.Size(75, 23);
+            this.regBtn.TabIndex = 5;
+            this.regBtn.Text = "Register";
+            this.regBtn.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 203);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.regBtn);
+            this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pwTxtBox);
+            this.Controls.Add(this.userTxtBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,11 +110,11 @@ namespace Uzduotis4
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox userTxtBox;
+        private System.Windows.Forms.TextBox pwTxtBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.Button regBtn;
     }
 }

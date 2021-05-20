@@ -22,6 +22,11 @@ namespace Uzduotis4
         }
     }
 }
+// Register popup
+// Clipboard copy
+// Searchbox
+// Random pw generator
+// Hide/unhide pw
 
 /*
  Privalomos slaptaþodþiø valdymo sistemos funkcijos:
