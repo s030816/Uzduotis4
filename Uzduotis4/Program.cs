@@ -43,5 +43,4 @@ Papildomos funkcijos:
     Prisijungimas prie sistemos: vartotojui prijungus failas deðifruojamas. (3 taðkai)
     Atsitiktinio slaptaþodþio generavimo funkcija (panaudojama kuriant naujà slaptaþodá). (2 taðkai)
     Papildoma funkcija slaptaþodþio paieðkai pagal pavadinimà: suradus tinkamà slaptaþodá jis iðkart nerodomas, pateikiamas tik jo uþðifruotas rezultatas. Paspaudus mygtukà rodyti parodomas slaptaþodis. (2 taðkai)
-    Mygtukas galintis nukopijuoti slaptaþodá á iðkarpinæ. (2 taðkai)
  */
