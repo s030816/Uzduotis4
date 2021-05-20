@@ -17,5 +17,11 @@ namespace Uzduotis4
             InitializeComponent();
         }
 
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            string tmp = nameTxtBox.Text;
+            int tmpRow = listBoxMain.Rows.Add();
+            listBoxMain.Rows[tmpRow].Cells["name_n"].Value = tmp;
+        }
     }
 }
