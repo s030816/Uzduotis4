@@ -23,7 +23,7 @@ namespace Uzduotis4
     }
 }
 // Register popup
-// Clipboard copy
+// Clipboard copy +
 // Searchbox
 // Random pw generator
 // Hide/unhide pw

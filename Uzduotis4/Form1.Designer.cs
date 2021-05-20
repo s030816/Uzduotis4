@@ -34,7 +34,7 @@ namespace Uzduotis4
             this.searchTxtBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.createBtn = new System.Windows.Forms.Button();
+            this.CreateBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,6 +50,7 @@ namespace Uzduotis4
             this.url_app = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ClipboardBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -91,7 +92,7 @@ namespace Uzduotis4
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.createBtn);
+            this.groupBox1.Controls.Add(this.CreateBtn);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -108,15 +109,15 @@ namespace Uzduotis4
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "New password";
             // 
-            // createBtn
+            // CreateBtn
             // 
-            this.createBtn.Location = new System.Drawing.Point(31, 150);
-            this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(100, 23);
-            this.createBtn.TabIndex = 9;
-            this.createBtn.Text = "Append to list";
-            this.createBtn.UseVisualStyleBackColor = true;
-            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
+            this.CreateBtn.Location = new System.Drawing.Point(31, 150);
+            this.CreateBtn.Name = "CreateBtn";
+            this.CreateBtn.Size = new System.Drawing.Size(100, 23);
+            this.CreateBtn.TabIndex = 9;
+            this.CreateBtn.Text = "Append to list";
+            this.CreateBtn.UseVisualStyleBackColor = true;
+            this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
             // button3
             // 
@@ -242,11 +243,22 @@ namespace Uzduotis4
             this.panel1.Size = new System.Drawing.Size(450, 219);
             this.panel1.TabIndex = 7;
             // 
+            // ClipboardBtn
+            // 
+            this.ClipboardBtn.Location = new System.Drawing.Point(333, 273);
+            this.ClipboardBtn.Name = "ClipboardBtn";
+            this.ClipboardBtn.Size = new System.Drawing.Size(132, 23);
+            this.ClipboardBtn.TabIndex = 8;
+            this.ClipboardBtn.Text = "Copy to clipboard";
+            this.ClipboardBtn.UseVisualStyleBackColor = true;
+            this.ClipboardBtn.Click += new System.EventHandler(this.ClipboardBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 319);
+            this.Controls.Add(this.ClipboardBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
@@ -281,13 +293,14 @@ namespace Uzduotis4
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox nameTxtBox;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button createBtn;
+        private System.Windows.Forms.Button CreateBtn;
         private System.Windows.Forms.DataGridView listBoxMain;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_n;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn url_app;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button ClipboardBtn;
     }
 }
 

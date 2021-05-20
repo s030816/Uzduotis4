@@ -17,11 +17,16 @@ namespace Uzduotis4
             InitializeComponent();
         }
 
-        private void createBtn_Click(object sender, EventArgs e)
+        private void CreateBtn_Click(object sender, EventArgs e)
         {
             string tmp = nameTxtBox.Text;
             int tmpRow = listBoxMain.Rows.Add();
             listBoxMain.Rows[tmpRow].Cells["name_n"].Value = tmp;
+        }
+
+        private void ClipboardBtn_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(listBoxMain.SelectedCells[0].Value.ToString());
         }
     }
 }
