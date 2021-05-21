@@ -35,7 +35,13 @@ namespace Uzduotis4
             {
                 listBoxMain.Rows.Remove(row);
             }
-            
+
+        }
+
+        private void GenBtn_Click(object sender, EventArgs e)
+        {
+            var random = new Random();
+            PwTxtBox.Text = "" + (char)random.Next('a','z');
         }
     }
 }

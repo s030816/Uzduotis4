@@ -35,14 +35,14 @@ namespace Uzduotis4
             this.DelBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CreateBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.GenBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ComTxtBox = new System.Windows.Forms.TextBox();
+            this.UrlTxtBox = new System.Windows.Forms.TextBox();
+            this.PwTxtBox = new System.Windows.Forms.TextBox();
             this.nameTxtBox = new System.Windows.Forms.TextBox();
             this.listBoxMain = new System.Windows.Forms.DataGridView();
             this.name_n = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,14 +94,14 @@ namespace Uzduotis4
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.CreateBtn);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.GenBtn);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.ComTxtBox);
+            this.groupBox1.Controls.Add(this.UrlTxtBox);
+            this.groupBox1.Controls.Add(this.PwTxtBox);
             this.groupBox1.Controls.Add(this.nameTxtBox);
             this.groupBox1.Location = new System.Drawing.Point(482, 47);
             this.groupBox1.Name = "groupBox1";
@@ -120,14 +120,15 @@ namespace Uzduotis4
             this.CreateBtn.UseVisualStyleBackColor = true;
             this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
-            // button3
+            // GenBtn
             // 
-            this.button3.Location = new System.Drawing.Point(286, 51);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Generate";
-            this.button3.UseVisualStyleBackColor = true;
+            this.GenBtn.Location = new System.Drawing.Point(286, 51);
+            this.GenBtn.Name = "GenBtn";
+            this.GenBtn.Size = new System.Drawing.Size(75, 23);
+            this.GenBtn.TabIndex = 8;
+            this.GenBtn.Text = "Generate";
+            this.GenBtn.UseVisualStyleBackColor = true;
+            this.GenBtn.Click += new System.EventHandler(this.GenBtn_Click);
             // 
             // label5
             // 
@@ -165,26 +166,26 @@ namespace Uzduotis4
             this.label2.TabIndex = 4;
             this.label2.Text = "Name";
             // 
-            // textBox4
+            // ComTxtBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(94, 107);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(176, 23);
-            this.textBox4.TabIndex = 3;
+            this.ComTxtBox.Location = new System.Drawing.Point(94, 107);
+            this.ComTxtBox.Name = "ComTxtBox";
+            this.ComTxtBox.Size = new System.Drawing.Size(176, 23);
+            this.ComTxtBox.TabIndex = 3;
             // 
-            // textBox3
+            // UrlTxtBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(94, 80);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(176, 23);
-            this.textBox3.TabIndex = 2;
+            this.UrlTxtBox.Location = new System.Drawing.Point(94, 80);
+            this.UrlTxtBox.Name = "UrlTxtBox";
+            this.UrlTxtBox.Size = new System.Drawing.Size(176, 23);
+            this.UrlTxtBox.TabIndex = 2;
             // 
-            // textBox2
+            // PwTxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(94, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 23);
-            this.textBox2.TabIndex = 1;
+            this.PwTxtBox.Location = new System.Drawing.Point(94, 51);
+            this.PwTxtBox.Name = "PwTxtBox";
+            this.PwTxtBox.Size = new System.Drawing.Size(176, 23);
+            this.PwTxtBox.TabIndex = 1;
             // 
             // nameTxtBox
             // 
@@ -289,11 +290,11 @@ namespace Uzduotis4
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ComTxtBox;
+        private System.Windows.Forms.TextBox UrlTxtBox;
+        private System.Windows.Forms.TextBox PwTxtBox;
         private System.Windows.Forms.TextBox nameTxtBox;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button GenBtn;
         private System.Windows.Forms.Button CreateBtn;
         private System.Windows.Forms.DataGridView listBoxMain;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_n;
