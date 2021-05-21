@@ -28,5 +28,14 @@ namespace Uzduotis4
         {
             Clipboard.SetText(listBoxMain.SelectedCells[0].Value.ToString());
         }
+
+        private void DelBtn_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in listBoxMain.SelectedRows)
+            {
+                listBoxMain.Rows.Remove(row);
+            }
+            
+        }
     }
 }

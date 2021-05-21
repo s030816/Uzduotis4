@@ -21,13 +21,13 @@ namespace Uzduotis4
             {
 
                 // Encrypt the string to an array of bytes.
-                //byte[] encrypted = EncryptStringToBytes_Aes(original, myAes.Key, myAes.IV);
+                byte[] encrypted = EncryptStringToBytes_Aes(original, myAes.Key, myAes.IV);
 
                 // Decrypt the bytes to a string.
-                //string roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
+               string roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
 
                 //Display the original data and the decrypted data.
-                Console.WriteLine("Original:   {0}", original);
+                Console.WriteLine("Original:   {0}", encrypted);
                 //Console.WriteLine("Round Trip: {0}", roundtrip);
             }
 

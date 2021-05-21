@@ -24,6 +24,7 @@ namespace Uzduotis4
 }
 // Register popup
 // Clipboard copy +
+// Delete function +
 // Searchbox
 // Random pw generator
 // Hide/unhide pw
