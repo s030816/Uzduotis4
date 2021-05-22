@@ -28,6 +28,7 @@ namespace Uzduotis4
 // Searchbox +
 // Random pw generator +
 // Hide/unhide pw
+// Accounts as separate txt files in working directory
 
 /*
  Privalomos slaptaþodþiø valdymo sistemos funkcijos:

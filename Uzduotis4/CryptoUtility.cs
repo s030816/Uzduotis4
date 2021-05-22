@@ -12,16 +12,11 @@ namespace Uzduotis4
     {
         public void EncodeStr(string input)
         {
-            string original = "Here is some data to encrypt!";
-
-            // Create a new instance of the Aes
-            // class.  This generates a new key and initialization
-            // vector (IV).
             using (Aes myAes = Aes.Create())
             {
 
                 // Encrypt the string to an array of bytes.
-                byte[] encrypted = EncryptStringToBytes_Aes(original, myAes.Key, myAes.IV);
+                byte[] encrypted = EncryptStringToBytes_Aes(input, myAes.Key, myAes.IV);
 
                 // Decrypt the bytes to a string.
                string roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
@@ -60,15 +55,12 @@ namespace Uzduotis4
                     {
                         using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                         {
-                            //Write all data to the stream.
                             swEncrypt.Write(plainText);
                         }
                         encrypted = msEncrypt.ToArray();
                     }
                 }
             }
-
-            // Return the encrypted bytes from the memory stream.
             return encrypted;
         }
 
