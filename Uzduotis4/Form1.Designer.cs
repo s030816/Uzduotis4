@@ -45,12 +45,12 @@ namespace Uzduotis4
             this.PwTxtBox = new System.Windows.Forms.TextBox();
             this.nameTxtBox = new System.Windows.Forms.TextBox();
             this.listBoxMain = new System.Windows.Forms.DataGridView();
-            this.name_n = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.url_app = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClipboardBtn = new System.Windows.Forms.Button();
+            this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pw_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.url_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.com_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -202,10 +202,10 @@ namespace Uzduotis4
             this.listBoxMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listBoxMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listBoxMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.name_n,
-            this.Password,
-            this.url_app,
-            this.Comment});
+            this.name_col,
+            this.pw_col,
+            this.url_col,
+            this.com_col});
             this.listBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxMain.Location = new System.Drawing.Point(0, 0);
             this.listBoxMain.Name = "listBoxMain";
@@ -213,30 +213,6 @@ namespace Uzduotis4
             this.listBoxMain.RowTemplate.Height = 25;
             this.listBoxMain.Size = new System.Drawing.Size(450, 219);
             this.listBoxMain.TabIndex = 6;
-            // 
-            // name_n
-            // 
-            this.name_n.HeaderText = "Name";
-            this.name_n.Name = "name_n";
-            this.name_n.ReadOnly = true;
-            // 
-            // Password
-            // 
-            this.Password.HeaderText = "Password";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            // 
-            // url_app
-            // 
-            this.url_app.HeaderText = "URL/APP";
-            this.url_app.Name = "url_app";
-            this.url_app.ReadOnly = true;
-            // 
-            // Comment
-            // 
-            this.Comment.HeaderText = "Comment";
-            this.Comment.Name = "Comment";
-            this.Comment.ReadOnly = true;
             // 
             // panel1
             // 
@@ -255,6 +231,30 @@ namespace Uzduotis4
             this.ClipboardBtn.Text = "Copy to clipboard";
             this.ClipboardBtn.UseVisualStyleBackColor = true;
             this.ClipboardBtn.Click += new System.EventHandler(this.ClipboardBtn_Click);
+            // 
+            // name_col
+            // 
+            this.name_col.HeaderText = "Name";
+            this.name_col.Name = "name_col";
+            this.name_col.ReadOnly = true;
+            // 
+            // pw_col
+            // 
+            this.pw_col.HeaderText = "Password";
+            this.pw_col.Name = "pw_col";
+            this.pw_col.ReadOnly = true;
+            // 
+            // url_col
+            // 
+            this.url_col.HeaderText = "URL/APP";
+            this.url_col.Name = "url_col";
+            this.url_col.ReadOnly = true;
+            // 
+            // com_col
+            // 
+            this.com_col.HeaderText = "Comment";
+            this.com_col.Name = "com_col";
+            this.com_col.ReadOnly = true;
             // 
             // Form1
             // 
@@ -298,12 +298,12 @@ namespace Uzduotis4
         private System.Windows.Forms.Button GenBtn;
         private System.Windows.Forms.Button CreateBtn;
         private System.Windows.Forms.DataGridView listBoxMain;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name_n;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn url_app;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button ClipboardBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_col;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pw_col;
+        private System.Windows.Forms.DataGridViewTextBoxColumn url_col;
+        private System.Windows.Forms.DataGridViewTextBoxColumn com_col;
     }
 }
 

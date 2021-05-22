@@ -19,9 +19,11 @@ namespace Uzduotis4
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
-            string tmp = nameTxtBox.Text;
             int tmpRow = listBoxMain.Rows.Add();
-            listBoxMain.Rows[tmpRow].Cells["name_n"].Value = tmp;
+            listBoxMain.Rows[tmpRow].Cells["name_col"].Value = nameTxtBox.Text;
+            listBoxMain.Rows[tmpRow].Cells["pw_col"].Value = PwTxtBox.Text;
+            listBoxMain.Rows[tmpRow].Cells["url_col"].Value = UrlTxtBox.Text;
+            listBoxMain.Rows[tmpRow].Cells["com_col"].Value = ComTxtBox.Text;
         }
 
         private void ClipboardBtn_Click(object sender, EventArgs e)
