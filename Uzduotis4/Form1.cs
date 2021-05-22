@@ -43,11 +43,26 @@ namespace Uzduotis4
             var random = new Random();
             string tmpBuffer = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$&1234567890";
             string tmpPw = "";
-            for(var i = 0; i < 7; ++i)
+            for(var i = 0; i < 12; ++i)
             {
                 tmpPw += tmpBuffer[random.Next(0, tmpBuffer.Length)];
             }
             PwTxtBox.Text = tmpPw;
+        }
+
+        private void searchTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in listBoxMain.Rows)
+            {
+                if (searchTxtBox.Text.Length > 2 && row.Cells["name_n"].Value.ToString().Contains(searchTxtBox.Text))
+                {
+                    row.Selected = true;
+                }
+                else
+                {
+                    row.Selected = false;
+                }
+            }
         }
     }
 }

@@ -80,6 +80,7 @@ namespace Uzduotis4
             this.searchTxtBox.Name = "searchTxtBox";
             this.searchTxtBox.Size = new System.Drawing.Size(118, 23);
             this.searchTxtBox.TabIndex = 3;
+            this.searchTxtBox.TextChanged += new System.EventHandler(this.searchTxtBox_TextChanged);
             // 
             // DelBtn
             // 
