@@ -41,7 +41,13 @@ namespace Uzduotis4
         private void GenBtn_Click(object sender, EventArgs e)
         {
             var random = new Random();
-            PwTxtBox.Text = "" + (char)random.Next('a','z');
+            string tmpBuffer = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$&1234567890";
+            string tmpPw = "";
+            for(var i = 0; i < 7; ++i)
+            {
+                tmpPw += tmpBuffer[random.Next(0, tmpBuffer.Length)];
+            }
+            PwTxtBox.Text = tmpPw;
         }
     }
 }
