@@ -19,7 +19,6 @@ namespace Uzduotis4
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
             if (salt == null)
             {
-                System.Windows.Forms.MessageBox.Show("works");
                 salt = new byte[SALT_SIZE];
                 provider.GetBytes(salt);
             }

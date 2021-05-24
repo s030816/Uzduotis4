@@ -38,18 +38,26 @@ namespace Uzduotis4
             //pwTxtBox.Text;
             if (File.Exists(userTxtBox.Text + ".txt"))
             {
-                CryptoUtility crypt = new CryptoUtility();
-                
-                if(crypt.PwAuthorize(pwTxtBox.Text,File.ReadAllText(userTxtBox.Text + ".txt")))
+                CryptoUtility crypt = new();
+                using (StreamReader file = new StreamReader(userTxtBox.Text + ".txt"))
                 {
-                    MessageBox.Show("True");
+                    string tmp = file.ReadLine();
+                    file.Close();
+                    if (crypt.PwAuthorize(pwTxtBox.Text, tmp))
+                    {
+                        authorizeState = true;
+                        //Close();
+                        this.Hide();
+                        Form1 mainWindow = new Form1(userTxtBox.Text,pwTxtBox.Text);
+                        mainWindow.ShowDialog();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect password");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("False");
-                }
-                //authorizeState = true;
-                //Close();
+                    
             }else
             {
                 MessageBox.Show("User not found");
@@ -58,8 +66,8 @@ namespace Uzduotis4
 
         private void regBtn_Click(object sender, EventArgs e)
         {
-            CryptoUtility crypt = new CryptoUtility();
-            File.WriteAllText("admin.txt", crypt.Pbkdf2Function("admin",null));
+            //CryptoUtility crypt = new CryptoUtility();
+            //File.WriteAllText("admin.txt", crypt.Pbkdf2Function("admin",null));
             //File.ReadAllBytes("admin.txt");
         }
     }
