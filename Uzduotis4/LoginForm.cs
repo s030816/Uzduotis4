@@ -13,6 +13,7 @@ namespace Uzduotis4
 {
     public partial class LoginForm : Form
     {
+        private bool authorizeState = false;
         public LoginForm()
         {
             InitializeComponent();
@@ -23,11 +24,27 @@ namespace Uzduotis4
 
         }
 
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(!authorizeState)
+            {
+                Application.Exit();
+            }
+        }
+
         private void loginBtn_Click(object sender, EventArgs e)
         {
             //userTxtBox.Text;
             //pwTxtBox.Text;
-            File.ReadAllBytes(userTxtBox.Text + ".data");
+            if (File.Exists(userTxtBox.Text + ".data"))
+            {
+                File.ReadAllBytes(userTxtBox.Text + ".data");
+                authorizeState = true;
+                Close();
+            }else
+            {
+                MessageBox.Show("User not found");
+            }
         }
     }
 }

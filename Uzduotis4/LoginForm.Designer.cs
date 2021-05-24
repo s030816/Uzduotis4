@@ -106,6 +106,7 @@ namespace Uzduotis4
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(LoginForm_FormClosing);
 
         }
 
