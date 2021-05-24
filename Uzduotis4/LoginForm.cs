@@ -36,15 +36,31 @@ namespace Uzduotis4
         {
             //userTxtBox.Text;
             //pwTxtBox.Text;
-            if (File.Exists(userTxtBox.Text + ".data"))
+            if (File.Exists(userTxtBox.Text + ".txt"))
             {
-                File.ReadAllBytes(userTxtBox.Text + ".data");
-                authorizeState = true;
-                Close();
+                CryptoUtility crypt = new CryptoUtility();
+                
+                if(crypt.PwAuthorize(pwTxtBox.Text,File.ReadAllText(userTxtBox.Text + ".txt")))
+                {
+                    MessageBox.Show("True");
+                }
+                else
+                {
+                    MessageBox.Show("False");
+                }
+                //authorizeState = true;
+                //Close();
             }else
             {
                 MessageBox.Show("User not found");
             }
+        }
+
+        private void regBtn_Click(object sender, EventArgs e)
+        {
+            CryptoUtility crypt = new CryptoUtility();
+            File.WriteAllText("admin.txt", crypt.Pbkdf2Function("admin",null));
+            //File.ReadAllBytes("admin.txt");
         }
     }
 }

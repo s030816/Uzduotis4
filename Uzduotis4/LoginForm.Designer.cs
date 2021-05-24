@@ -88,6 +88,7 @@ namespace Uzduotis4
             this.regBtn.TabIndex = 5;
             this.regBtn.Text = "Register";
             this.regBtn.UseVisualStyleBackColor = true;
+            this.regBtn.Click += new System.EventHandler(this.regBtn_Click);
             // 
             // LoginForm
             // 
@@ -104,9 +105,9 @@ namespace Uzduotis4
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(LoginForm_FormClosing);
 
         }
 

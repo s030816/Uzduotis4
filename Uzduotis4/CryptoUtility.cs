@@ -10,6 +10,29 @@ namespace Uzduotis4
 {
     class CryptoUtility
     {
+        private const int SALT_SIZE = 24; // size in bytes
+        private const int HASH_SIZE = 24; // size in bytes
+        private const int ITERATIONS = 10000;
+        public string Pbkdf2Function(string input, byte[] salt)
+        {
+            // Generate a salt
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+            if (salt == null)
+            {
+                System.Windows.Forms.MessageBox.Show("works");
+                salt = new byte[SALT_SIZE];
+                provider.GetBytes(salt);
+            }
+            // Generate the hash
+            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(input, salt, ITERATIONS);
+            return Convert.ToBase64String(salt)+"?"+Convert.ToBase64String(pbkdf2.GetBytes(HASH_SIZE));
+        }
+
+        public bool PwAuthorize(string pw, string hashedpw)
+        {
+            return Pbkdf2Function(pw, Convert.FromBase64String(hashedpw.Split('?')[0])) == hashedpw;
+        }
+        
         public void EncodeStr(string input)
         {
             using (Aes myAes = Aes.Create())

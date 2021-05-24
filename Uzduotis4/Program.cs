@@ -44,7 +44,7 @@ Papildomos funkcijos:
     Paleidus sistemà pirmà kartà reikalinga vartotojo paskyros sukûrimo forma: slapyvardis, slaptaþodis (ðifruojamas PBKDF2, Bcrypt, Scrypt, Argon2 arba pasirenkant maiðos funkcijà). 
 Kuriant vartotojo paskyrà yra sugeneruojamas ir vartotojui priskiriamas .csv arba .txt failas. Failas yra uþðifruojamas AES algoritmu. (3 taðkai)
 
-    Prisijungimas prie sistemos: vartotojui prijungus failas deðifruojamas. (3 taðkai)
+    //Prisijungimas prie sistemos: vartotojui prijungus failas deðifruojamas. (3 taðkai)
     //Atsitiktinio slaptaþodþio generavimo funkcija (panaudojama kuriant naujà slaptaþodá). (2 taðkai)
     Papildoma funkcija slaptaþodþio paieðkai pagal pavadinimà: suradus tinkamà slaptaþodá jis iðkart nerodomas, pateikiamas tik jo uþðifruotas rezultatas. 
 Paspaudus mygtukà rodyti parodomas slaptaþodis. (2 taðkai)
