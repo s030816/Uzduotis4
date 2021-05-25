@@ -42,7 +42,9 @@ namespace Uzduotis4
 
             using (StreamReader sReader = new StreamReader(test,UnicodeEncoding.Unicode))
             {
-                MessageBox.Show(sReader.ReadToEnd());
+                string tmp = crypt.EncodeStr(sReader.ReadToEnd(), pw);
+                MessageBox.Show(tmp);
+                MessageBox.Show(crypt.DecodeStr(tmp, pw));
             }
             sWriter.Dispose();
         }

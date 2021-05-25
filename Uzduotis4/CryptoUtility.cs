@@ -44,10 +44,10 @@ namespace Uzduotis4
                 {
                     tmp_key[i] = tmp[i];
                 }
-                encrypted = Convert.ToBase64String(aesAlg.IV) + '\n';
+                encrypted = Convert.ToBase64String(aesAlg.IV) + Environment.NewLine;
                 // TODO Implement string stream
                 
-                encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(input, tmp_key, aesAlg.IV)) + '\n';
+                encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(input, tmp_key, aesAlg.IV)) + Environment.NewLine;
             }
                
 
@@ -59,6 +59,27 @@ namespace Uzduotis4
                 //Console.WriteLine("Round Trip: {0}", roundtrip);
             
             return encrypted;
+        }
+        public string DecodeStr(string input, string key)
+        {
+            string decodedString = null;
+            using (Aes aesAlg = Aes.Create())
+            {
+                int ksize = aesAlg.KeySize / 8;
+                byte[] tmp_key = new byte[ksize];
+                var tmp = Encoding.ASCII.GetBytes(key, 0, key.Length);
+                for (var i = 0; i < ksize && i < tmp.Length; ++i)
+                {
+                    tmp_key[i] = tmp[i];
+                }
+                //new MemoryStream(Encoding.UTF8.GetBytes(s));
+                StreamReader sReader = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(input)));
+                aesAlg.IV = Convert.FromBase64String(sReader.ReadLine());
+                decodedString = DecryptStringFromBytes_Aes(Convert.FromBase64String(sReader.ReadToEnd()), tmp_key, aesAlg.IV);
+                sReader.Dispose(); 
+            }
+            return decodedString;
+            //return DecryptStringFromBytes_Aes(input, myAes.Key, myAes.IV);
         }
         private byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
