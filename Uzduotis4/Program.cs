@@ -28,7 +28,7 @@ namespace Uzduotis4
 // Searchbox +
 // Random pw generator +
 // Hide/unhide pw
-// Accounts as separate txt files in working directory
+// Accounts as separate txt files in working directory +
 // Dump data to .txt file
 
 

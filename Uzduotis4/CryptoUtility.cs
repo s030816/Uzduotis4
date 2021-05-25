@@ -32,22 +32,33 @@ namespace Uzduotis4
             return Pbkdf2Function(pw, Convert.FromBase64String(hashedpw.Split('?')[0])) == hashedpw;
         }
         
-        public void EncodeStr(string input)
+        public string EncodeStr(string input, string key)
         {
-            using (Aes myAes = Aes.Create())
+            string encrypted = null;
+            using (Aes aesAlg = Aes.Create())
             {
-
-                // Encrypt the string to an array of bytes.
-                byte[] encrypted = EncryptStringToBytes_Aes(input, myAes.Key, myAes.IV);
+                int ksize = aesAlg.KeySize / 8;
+                byte[] tmp_key = new byte[ksize];
+                var tmp = Encoding.ASCII.GetBytes(key, 0, key.Length);
+                for (var i = 0; i < ksize && i < tmp.Length; ++i)
+                {
+                    tmp_key[i] = tmp[i];
+                }
+                encrypted = Convert.ToBase64String(aesAlg.IV) + '\n';
+                // TODO Implement string stream
+                
+                encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(input, tmp_key, aesAlg.IV)) + '\n';
+            }
+               
 
                 // Decrypt the bytes to a string.
-               string roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
+               //string roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
 
                 //Display the original data and the decrypted data.
-                Console.WriteLine("Original:   {0}", encrypted);
+                //Console.WriteLine("Original:   {0}", encrypted);
                 //Console.WriteLine("Round Trip: {0}", roundtrip);
-            }
-
+            
+            return encrypted;
         }
         private byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
@@ -66,7 +77,6 @@ namespace Uzduotis4
             {
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
-
                 // Create an encryptor to perform the stream transform.
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
