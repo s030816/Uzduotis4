@@ -45,12 +45,12 @@ namespace Uzduotis4
             this.PwTxtBox = new System.Windows.Forms.TextBox();
             this.nameTxtBox = new System.Windows.Forms.TextBox();
             this.listBoxMain = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ClipboardBtn = new System.Windows.Forms.Button();
             this.name_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pw_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.url_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.com_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ClipboardBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -207,12 +207,32 @@ namespace Uzduotis4
             this.url_col,
             this.com_col});
             this.listBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.listBoxMain.Location = new System.Drawing.Point(0, 0);
             this.listBoxMain.Name = "listBoxMain";
-            this.listBoxMain.ReadOnly = true;
             this.listBoxMain.RowTemplate.Height = 25;
             this.listBoxMain.Size = new System.Drawing.Size(450, 219);
             this.listBoxMain.TabIndex = 6;
+            // 
+            // name_col
+            // 
+            this.name_col.HeaderText = "Name";
+            this.name_col.Name = "name_col";
+            // 
+            // pw_col
+            // 
+            this.pw_col.HeaderText = "Password";
+            this.pw_col.Name = "pw_col";
+            // 
+            // url_col
+            // 
+            this.url_col.HeaderText = "URL/APP";
+            this.url_col.Name = "url_col";
+            // 
+            // com_col
+            // 
+            this.com_col.HeaderText = "Comment";
+            this.com_col.Name = "com_col";
             // 
             // panel1
             // 
@@ -232,30 +252,6 @@ namespace Uzduotis4
             this.ClipboardBtn.UseVisualStyleBackColor = true;
             this.ClipboardBtn.Click += new System.EventHandler(this.ClipboardBtn_Click);
             // 
-            // name_col
-            // 
-            this.name_col.HeaderText = "Name";
-            this.name_col.Name = "name_col";
-            this.name_col.ReadOnly = true;
-            // 
-            // pw_col
-            // 
-            this.pw_col.HeaderText = "Password";
-            this.pw_col.Name = "pw_col";
-            this.pw_col.ReadOnly = true;
-            // 
-            // url_col
-            // 
-            this.url_col.HeaderText = "URL/APP";
-            this.url_col.Name = "url_col";
-            this.url_col.ReadOnly = true;
-            // 
-            // com_col
-            // 
-            this.com_col.HeaderText = "Comment";
-            this.com_col.Name = "com_col";
-            this.com_col.ReadOnly = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -272,13 +268,13 @@ namespace Uzduotis4
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Password App";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxMain)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 
         }
 

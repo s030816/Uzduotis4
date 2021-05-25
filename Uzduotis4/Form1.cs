@@ -25,8 +25,8 @@ namespace Uzduotis4
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Program.
-            MemoryStream test = new MemoryStream();
-            StreamWriter sWriter = new StreamWriter(test, UnicodeEncoding.Unicode);
+            MemoryStream mStream = new MemoryStream();
+            StreamWriter sWriter = new StreamWriter(mStream, UnicodeEncoding.Unicode);
             CryptoUtility crypt = new CryptoUtility();
             //File.WriteAllText("admin.txt", crypt.Pbkdf2Function("admin",null));
             sWriter.WriteLine(crypt.Pbkdf2Function(pw, null));
@@ -38,13 +38,14 @@ namespace Uzduotis4
                                     row.Cells["com_col"].Value);
             }
             sWriter.Flush();
-            test.Position = 0L;
+            mStream.Position = 0L;
 
-            using (StreamReader sReader = new StreamReader(test,UnicodeEncoding.Unicode))
+            using (StreamReader sReader = new StreamReader(mStream,UnicodeEncoding.Unicode))
             {
-                string tmp = crypt.EncodeStr(sReader.ReadToEnd(), pw);
-                MessageBox.Show(tmp);
-                MessageBox.Show(crypt.DecodeStr(tmp, pw));
+                File.WriteAllText(user + ".txt", crypt.EncodeStr(sReader.ReadToEnd(), pw));
+                //string tmp = crypt.EncodeStr(sReader.ReadToEnd(), pw);
+                //MessageBox.Show(tmp);
+                //MessageBox.Show(crypt.DecodeStr(tmp, pw));
             }
             sWriter.Dispose();
         }

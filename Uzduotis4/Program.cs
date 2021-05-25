@@ -30,6 +30,8 @@ namespace Uzduotis4
 // Hide/unhide pw
 // Accounts as separate txt files in working directory +
 // Dump data to .txt file
+// Separate row encoding/decoding with streams +
+// Complete decode/encode utilization
 
 
 /*

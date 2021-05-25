@@ -27,8 +27,23 @@ namespace Uzduotis4
             return Convert.ToBase64String(salt)+"?"+Convert.ToBase64String(pbkdf2.GetBytes(HASH_SIZE));
         }
 
+        private bool ValidateBase64(string hashedpw)
+        {
+            return Convert.TryFromBase64String(hashedpw.PadRight(hashedpw.Length / 4 * 4 + (hashedpw.Length % 4 == 0 ? 0 : 4), '='),
+                new Span<byte>(new byte[hashedpw.Length]), out _);
+        }
+
         public bool PwAuthorize(string pw, string hashedpw)
         {
+            if(!hashedpw.Contains('?'))
+            {
+                return false;
+            }
+            if(!ValidateBase64(hashedpw.Split('?')[0]))
+            {
+                System.Windows.Forms.MessageBox.Show("Gotcha");
+                return false;
+            }
             return Pbkdf2Function(pw, Convert.FromBase64String(hashedpw.Split('?')[0])) == hashedpw;
         }
         
@@ -44,10 +59,16 @@ namespace Uzduotis4
                 {
                     tmp_key[i] = tmp[i];
                 }
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.Zeros;
                 encrypted = Convert.ToBase64String(aesAlg.IV) + Environment.NewLine;
                 // TODO Implement string stream
-                
-                encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(input, tmp_key, aesAlg.IV)) + Environment.NewLine;
+                StreamReader sReader = new StreamReader(new MemoryStream(Encoding.Unicode.GetBytes(input)), UnicodeEncoding.Unicode);
+                while (!sReader.EndOfStream)
+                {
+                    encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(sReader.ReadLine(), tmp_key, aesAlg.IV)) + Environment.NewLine;
+                }
+                sReader.Dispose();
             }
                
 
@@ -62,7 +83,7 @@ namespace Uzduotis4
         }
         public string DecodeStr(string input, string key)
         {
-            string decodedString = null;
+            string decodedString = "";
             using (Aes aesAlg = Aes.Create())
             {
                 int ksize = aesAlg.KeySize / 8;
@@ -75,7 +96,10 @@ namespace Uzduotis4
                 //new MemoryStream(Encoding.UTF8.GetBytes(s));
                 StreamReader sReader = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(input)));
                 aesAlg.IV = Convert.FromBase64String(sReader.ReadLine());
-                decodedString = DecryptStringFromBytes_Aes(Convert.FromBase64String(sReader.ReadToEnd()), tmp_key, aesAlg.IV);
+                while (!sReader.EndOfStream)
+                {
+                    decodedString += DecryptStringFromBytes_Aes(Convert.FromBase64String(sReader.ReadLine()), tmp_key, aesAlg.IV) + Environment.NewLine;
+                }
                 sReader.Dispose(); 
             }
             return decodedString;
@@ -96,6 +120,8 @@ namespace Uzduotis4
             // with the specified key and IV.
             using (Aes aesAlg = Aes.Create())
             {
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.Zeros;
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
                 // Create an encryptor to perform the stream transform.
@@ -135,9 +161,11 @@ namespace Uzduotis4
             // with the specified key and IV.
             using (Aes aesAlg = Aes.Create())
             {
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.Zeros;
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
-
+                
                 // Create a decryptor to perform the stream transform.
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 

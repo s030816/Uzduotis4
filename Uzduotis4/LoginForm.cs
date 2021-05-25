@@ -38,12 +38,22 @@ namespace Uzduotis4
             //pwTxtBox.Text;
             if (File.Exists(userTxtBox.Text + ".txt"))
             {
+                
                 CryptoUtility crypt = new();
                 using (StreamReader file = new StreamReader(userTxtBox.Text + ".txt"))
                 {
-                    string tmp = file.ReadLine();
+                    string tmp = file.ReadToEnd();
                     file.Close();
-                    if (crypt.PwAuthorize(pwTxtBox.Text, tmp))
+                    tmp = crypt.DecodeStr(tmp, pwTxtBox.Text);
+                    tmp = tmp.Replace("\0", string.Empty);
+                    MessageBox.Show(tmp);
+                    string fLine = null;
+                    using (var reader = new StringReader(tmp))
+                    {
+                        fLine = reader.ReadLine();
+                        //MessageBox.Show(fLine);
+                    }
+                    if (crypt.PwAuthorize(pwTxtBox.Text, fLine))
                     {
                         authorizeState = true;
                         //Close();
