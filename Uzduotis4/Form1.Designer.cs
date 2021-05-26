@@ -29,7 +29,7 @@ namespace Uzduotis4
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.ShowBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchTxtBox = new System.Windows.Forms.TextBox();
             this.DelBtn = new System.Windows.Forms.Button();
@@ -56,14 +56,15 @@ namespace Uzduotis4
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // ShowBtn
             // 
-            this.button1.Location = new System.Drawing.Point(17, 273);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Show selected";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ShowBtn.Location = new System.Drawing.Point(17, 273);
+            this.ShowBtn.Name = "ShowBtn";
+            this.ShowBtn.Size = new System.Drawing.Size(132, 23);
+            this.ShowBtn.TabIndex = 1;
+            this.ShowBtn.Text = "Show selected";
+            this.ShowBtn.UseVisualStyleBackColor = true;
+            this.ShowBtn.Click += new System.EventHandler(this.ShowBtn_Click);
             // 
             // label1
             // 
@@ -213,6 +214,7 @@ namespace Uzduotis4
             this.listBoxMain.RowTemplate.Height = 25;
             this.listBoxMain.Size = new System.Drawing.Size(450, 219);
             this.listBoxMain.TabIndex = 6;
+            this.listBoxMain.SelectionChanged += DataGridView_SelectionChanged;
             // 
             // name_col
             // 
@@ -263,7 +265,7 @@ namespace Uzduotis4
             this.Controls.Add(this.DelBtn);
             this.Controls.Add(this.searchTxtBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ShowBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -279,7 +281,7 @@ namespace Uzduotis4
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ShowBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox searchTxtBox;
         private System.Windows.Forms.Button DelBtn;

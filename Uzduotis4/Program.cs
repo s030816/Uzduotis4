@@ -28,6 +28,7 @@ namespace Uzduotis4
 // Searchbox +
 // Random pw generator +
 // Hide/unhide pw
+// Encrypt/decrypt pws in datagrid
 // Accounts as separate txt files in working directory +
 // Dump data to .txt file +
 // Separate row encoding/decoding with streams +
@@ -37,7 +38,7 @@ namespace Uzduotis4
 /*
  Privalomos slaptaþodþiø valdymo sistemos funkcijos:
 
-    Paleidus sistemà pirmà kartà sukuriamas .csv arba .txt failas. Iðjungiant sistemà ðis failas turi bûti uþðifruojamas AES algoritmu. Kità kartà paleidus sistemà failas yra deðifruojamas. (4 taðkai)
+    //Paleidus sistemà pirmà kartà sukuriamas .csv arba .txt failas. Iðjungiant sistemà ðis failas turi bûti uþðifruojamas AES algoritmu. Kità kartà paleidus sistemà failas yra deðifruojamas. (4 taðkai)
     //Naujo slaptaþodþio iðsaugojimas: uþpildþius formà (pavadinimas, slaptaþodis, URL/aplikacija, komentaras), visa jos informacija saugojama .csv arba .txt faile. Slaptaþodþiui pritaikomas ðifravimo algoritmas (pvz.: AES, DES ar RSA. Renkatës savo nuoþiûra). (3 taðkai)
     //Slaptaþodþio paieðka pagal pavadinimà. (2 taðkai)
     Slaptaþodþio atnaujinimas pagal pavadinimà: suradus tinkamà slaptaþodá jis pakeièiamas naujai ávestu. Naujam slaptaþodþiui taip pat turi bûti pritaikytas ðifravimo algoritmas. (2 taðkai) 

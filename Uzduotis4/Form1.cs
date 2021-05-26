@@ -69,10 +69,29 @@ namespace Uzduotis4
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
-            // TODO Empty string check
+            if (nameTxtBox.Text.Length < 3)
+            {
+                MessageBox.Show("Empty name field");
+                return;
+            }
+            if (nameTxtBox.Text.Length < 4)
+            {
+                MessageBox.Show("Password must contain atleast 4 characters");
+                return;
+            }
+            if (UrlTxtBox.Text.Length < 3)
+            {
+                MessageBox.Show("Empty URL/App field");
+                return;
+            }
+            if (ComTxtBox.Text.Length < 3)
+            {
+                ComTxtBox.Text = "   ";
+            }
+            CryptoUtility cryp = new CryptoUtility();
             int tmpRow = listBoxMain.Rows.Add();
             listBoxMain.Rows[tmpRow].Cells["name_col"].Value = nameTxtBox.Text;
-            listBoxMain.Rows[tmpRow].Cells["pw_col"].Value = PwTxtBox.Text;
+            listBoxMain.Rows[tmpRow].Cells["pw_col"].Value = cryp.Pbkdf2Function(PwTxtBox.Text,null);
             listBoxMain.Rows[tmpRow].Cells["url_col"].Value = UrlTxtBox.Text;
             listBoxMain.Rows[tmpRow].Cells["com_col"].Value = ComTxtBox.Text;
         }
@@ -116,6 +135,19 @@ namespace Uzduotis4
                     row.Selected = false;
                 }
             }
+        }
+
+        private void ShowBtn_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in listBoxMain.SelectedRows)
+            {
+                //
+            }
+        }
+
+        private void DataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Selcha");
         }
     }
 }
