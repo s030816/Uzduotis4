@@ -46,7 +46,7 @@ namespace Uzduotis4
                     file.Close();
                     tmp = crypt.DecodeStr(tmp, pwTxtBox.Text);
                     tmp = tmp.Replace("\0", string.Empty);
-                    MessageBox.Show(tmp);
+                    //MessageBox.Show(tmp);
                     string fLine = null;
                     using (var reader = new StringReader(tmp))
                     {
@@ -58,7 +58,7 @@ namespace Uzduotis4
                         authorizeState = true;
                         //Close();
                         this.Hide();
-                        Form1 mainWindow = new Form1(userTxtBox.Text,pwTxtBox.Text);
+                        Form1 mainWindow = new Form1(userTxtBox.Text,pwTxtBox.Text, tmp);
                         mainWindow.ShowDialog();
                         Close();
                     }

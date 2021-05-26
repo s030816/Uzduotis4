@@ -29,9 +29,9 @@ namespace Uzduotis4
 // Random pw generator +
 // Hide/unhide pw
 // Accounts as separate txt files in working directory +
-// Dump data to .txt file
+// Dump data to .txt file +
 // Separate row encoding/decoding with streams +
-// Complete decode/encode utilization
+// Complete decode/encode utilization +
 
 
 /*

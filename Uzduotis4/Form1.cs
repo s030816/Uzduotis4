@@ -15,11 +15,27 @@ namespace Uzduotis4
     {
         private string user;
         private string pw;
-        public Form1(string user, string pw)
+        public Form1(string user, string pw, string data)
         {
             InitializeComponent();
             this.user = user;
             this.pw = pw;
+            using (StringReader reader = new StringReader(data))
+            {
+                string test = null;
+                _ = reader.ReadLine();
+                while (null != (test = reader.ReadLine()))
+                {
+                    //MessageBox.Show(test);
+                    string[] tmpParse = test.Split('\\');
+                    int tmpRow = listBoxMain.Rows.Add();
+                    listBoxMain.Rows[tmpRow].Cells["name_col"].Value = tmpParse[0];
+                    listBoxMain.Rows[tmpRow].Cells["pw_col"].Value = tmpParse[1];
+                    listBoxMain.Rows[tmpRow].Cells["url_col"].Value = tmpParse[2];
+                    listBoxMain.Rows[tmpRow].Cells["com_col"].Value = tmpParse[3];
+                }
+                //MessageBox.Show(fLine);
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,7 +107,7 @@ namespace Uzduotis4
         {
             foreach (DataGridViewRow row in listBoxMain.Rows)
             {
-                if (searchTxtBox.Text.Length > 2 && row.Cells["name_n"].Value.ToString().Contains(searchTxtBox.Text))
+                if (searchTxtBox.Text.Length > 2 && row.Cells["name_col"].Value.ToString().Contains(searchTxtBox.Text))
                 {
                     row.Selected = true;
                 }
