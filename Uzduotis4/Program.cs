@@ -22,7 +22,7 @@ namespace Uzduotis4
         }
     }
 }
-// Register function
+// Register function +
 // Clipboard copy +
 // Delete function +
 // Searchbox +

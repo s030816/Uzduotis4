@@ -76,9 +76,28 @@ namespace Uzduotis4
 
         private void regBtn_Click(object sender, EventArgs e)
         {
-            //CryptoUtility crypt = new CryptoUtility();
-            //File.WriteAllText("admin.txt", crypt.Pbkdf2Function("admin",null));
-            //File.ReadAllBytes("admin.txt");
+            if(userTxtBox.Text.Length < 3)
+            {
+                MessageBox.Show("Username too short");
+                return;
+            }
+            if(pwTxtBox.Text.Length < 4)
+            {
+                MessageBox.Show("Password too short");
+                return;
+            }
+            if (File.Exists(userTxtBox.Text + ".txt"))
+            {
+                MessageBox.Show("User already exists");
+                return;
+            }
+            CryptoUtility crypt = new();
+            File.WriteAllText(userTxtBox.Text + ".txt", crypt.Pbkdf2Function(pwTxtBox.Text, null));
+            authorizeState = true;
+            this.Hide();
+            Form1 mainWindow = new Form1(userTxtBox.Text, pwTxtBox.Text, null);
+            mainWindow.ShowDialog();
+            Close();
         }
     }
 }

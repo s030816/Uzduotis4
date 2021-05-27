@@ -20,6 +20,7 @@ namespace Uzduotis4
             InitializeComponent();
             this.user = user;
             this.pw = pw;
+            if (data == null) return;
             using (StringReader reader = new StringReader(data))
             {
                 string test = null;

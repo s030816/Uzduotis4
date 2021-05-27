@@ -210,11 +210,11 @@ namespace Uzduotis4
             this.listBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxMain.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.listBoxMain.Location = new System.Drawing.Point(0, 0);
+            this.listBoxMain.MultiSelect = false;
             this.listBoxMain.Name = "listBoxMain";
             this.listBoxMain.RowTemplate.Height = 25;
             this.listBoxMain.Size = new System.Drawing.Size(450, 219);
             this.listBoxMain.TabIndex = 6;
-            this.listBoxMain.SelectionChanged += DataGridView_SelectionChanged;
             // 
             // name_col
             // 
