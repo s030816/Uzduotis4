@@ -160,8 +160,28 @@ namespace Uzduotis4
             if (selected_row != null && selected_row != listBoxMain.SelectedCells[0].OwningRow)
             {
                 CryptoUtility crypt = new();
+                MessageBox.Show("debug");
                 selected_row.Cells["pw_col"].Value = crypt.PwEncryptor(selected_row.Cells["pw_col"].Value.ToString(), this.pw);
                 selected_row = null;
+            }
+        }
+
+        private void RetBtn_Click(object sender, EventArgs e)
+        {
+            if (listBoxMain.SelectedCells != null)
+            {
+                if(selected_row == null)
+                {
+                    selected_row = listBoxMain.SelectedCells[0].OwningRow;
+                    CryptoUtility cryp = new();
+                    selected_row.Cells["pw_col"].Value = cryp.PwDecryptor(selected_row.Cells["pw_col"].Value.ToString(), this.pw);
+                }
+                nameTxtBox.Text = selected_row.Cells["name_col"].Value.ToString();
+                PwTxtBox.Text = selected_row.Cells["pw_col"].Value.ToString();
+                UrlTxtBox.Text = selected_row.Cells["url_col"].Value.ToString();
+                ComTxtBox.Text = selected_row.Cells["com_col"].Value.ToString();
+                selected_row = null;
+                listBoxMain.Rows.Remove(listBoxMain.SelectedCells[0].OwningRow);
             }
         }
     }

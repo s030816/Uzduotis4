@@ -51,6 +51,7 @@ namespace Uzduotis4
             this.com_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClipboardBtn = new System.Windows.Forms.Button();
+            this.RetBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxMain)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,6 +96,7 @@ namespace Uzduotis4
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.RetBtn);
             this.groupBox1.Controls.Add(this.CreateBtn);
             this.groupBox1.Controls.Add(this.GenBtn);
             this.groupBox1.Controls.Add(this.label5);
@@ -255,6 +257,16 @@ namespace Uzduotis4
             this.ClipboardBtn.UseVisualStyleBackColor = true;
             this.ClipboardBtn.Click += new System.EventHandler(this.ClipboardBtn_Click);
             // 
+            // RetBtn
+            // 
+            this.RetBtn.Location = new System.Drawing.Point(31, 179);
+            this.RetBtn.Name = "RetBtn";
+            this.RetBtn.Size = new System.Drawing.Size(100, 23);
+            this.RetBtn.TabIndex = 10;
+            this.RetBtn.Text = "Retrieve pw";
+            this.RetBtn.UseVisualStyleBackColor = true;
+            this.RetBtn.Click += new System.EventHandler(this.RetBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -304,6 +316,7 @@ namespace Uzduotis4
         private System.Windows.Forms.DataGridViewTextBoxColumn pw_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn url_col;
         private System.Windows.Forms.DataGridViewTextBoxColumn com_col;
+        private System.Windows.Forms.Button RetBtn;
     }
 }
 
