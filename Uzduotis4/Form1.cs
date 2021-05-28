@@ -15,6 +15,7 @@ namespace Uzduotis4
     {
         private string user;
         private string pw;
+        private DataGridViewRow selected_row;
         public Form1(string user, string pw, string data)
         {
             InitializeComponent();
@@ -45,6 +46,10 @@ namespace Uzduotis4
             MemoryStream mStream = new MemoryStream();
             StreamWriter sWriter = new StreamWriter(mStream, UnicodeEncoding.Unicode);
             CryptoUtility crypt = new CryptoUtility();
+            if(selected_row != null)
+            {
+                selected_row.Cells["pw_col"].Value = crypt.PwEncryptor(selected_row.Cells["pw_col"].Value.ToString(), this.pw);
+            }
             //File.WriteAllText("admin.txt", crypt.Pbkdf2Function("admin",null));
             sWriter.WriteLine(crypt.Pbkdf2Function(pw, null));
             foreach(DataGridViewRow row in listBoxMain.Rows)
@@ -75,7 +80,7 @@ namespace Uzduotis4
                 MessageBox.Show("Empty name field");
                 return;
             }
-            if (nameTxtBox.Text.Length < 4)
+            if (PwTxtBox.Text.Length < 4)
             {
                 MessageBox.Show("Password must contain atleast 4 characters");
                 return;
@@ -92,23 +97,25 @@ namespace Uzduotis4
             CryptoUtility cryp = new CryptoUtility();
             int tmpRow = listBoxMain.Rows.Add();
             listBoxMain.Rows[tmpRow].Cells["name_col"].Value = nameTxtBox.Text;
-            listBoxMain.Rows[tmpRow].Cells["pw_col"].Value = cryp.Pbkdf2Function(PwTxtBox.Text,null);
+            listBoxMain.Rows[tmpRow].Cells["pw_col"].Value = cryp.PwEncryptor(PwTxtBox.Text,this.pw);
             listBoxMain.Rows[tmpRow].Cells["url_col"].Value = UrlTxtBox.Text;
             listBoxMain.Rows[tmpRow].Cells["com_col"].Value = ComTxtBox.Text;
         }
 
         private void ClipboardBtn_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(listBoxMain.SelectedCells[0].Value.ToString());
+            if (listBoxMain.SelectedCells != null)
+            {
+                Clipboard.SetText(listBoxMain.SelectedCells[0].Value.ToString());
+            }
         }
 
         private void DelBtn_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in listBoxMain.SelectedRows)
+            if (listBoxMain.SelectedCells != null)
             {
-                listBoxMain.Rows.Remove(row);
+                listBoxMain.Rows.Remove(listBoxMain.SelectedCells[0].OwningRow);
             }
-
         }
 
         private void GenBtn_Click(object sender, EventArgs e)
@@ -140,15 +147,22 @@ namespace Uzduotis4
 
         private void ShowBtn_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in listBoxMain.SelectedRows)
+            if (listBoxMain.SelectedCells != null && selected_row == null)
             {
-                //
+                selected_row = listBoxMain.SelectedCells[0].OwningRow;
+                CryptoUtility cryp = new();
+                selected_row.Cells["pw_col"].Value = cryp.PwDecryptor(selected_row.Cells["pw_col"].Value.ToString(), this.pw);
             }
         }
 
         private void DataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Selcha");
+            if (selected_row != null && selected_row != listBoxMain.SelectedCells[0].OwningRow)
+            {
+                CryptoUtility crypt = new();
+                selected_row.Cells["pw_col"].Value = crypt.PwEncryptor(selected_row.Cells["pw_col"].Value.ToString(), this.pw);
+                selected_row = null;
+            }
         }
     }
 }

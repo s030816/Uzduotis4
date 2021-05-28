@@ -27,8 +27,8 @@ namespace Uzduotis4
 // Delete function +
 // Searchbox +
 // Random pw generator +
-// Hide/unhide pw
-// Encrypt/decrypt pws in datagrid
+// Hide/unhide pw +
+// Encrypt/decrypt pws in datagrid +
 // Accounts as separate txt files in working directory +
 // Dump data to .txt file +
 // Separate row encoding/decoding with streams +
@@ -51,6 +51,6 @@ Kuriant vartotojo paskyrà yra sugeneruojamas ir vartotojui priskiriamas .csv arb
 
     //Prisijungimas prie sistemos: vartotojui prijungus failas deðifruojamas. (3 taðkai)
     //Atsitiktinio slaptaþodþio generavimo funkcija (panaudojama kuriant naujà slaptaþodá). (2 taðkai)
-    Papildoma funkcija slaptaþodþio paieðkai pagal pavadinimà: suradus tinkamà slaptaþodá jis iðkart nerodomas, pateikiamas tik jo uþðifruotas rezultatas. 
-Paspaudus mygtukà rodyti parodomas slaptaþodis. (2 taðkai)
+    //Papildoma funkcija slaptaþodþio paieðkai pagal pavadinimà: suradus tinkamà slaptaþodá jis iðkart nerodomas, pateikiamas tik jo uþðifruotas rezultatas. 
+//Paspaudus mygtukà rodyti parodomas slaptaþodis. (2 taðkai)
  */

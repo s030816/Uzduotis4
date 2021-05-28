@@ -66,19 +66,12 @@ namespace Uzduotis4
                 StreamReader sReader = new StreamReader(new MemoryStream(Encoding.Unicode.GetBytes(input)), UnicodeEncoding.Unicode);
                 while (!sReader.EndOfStream)
                 {
-                    encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(sReader.ReadLine(), tmp_key, aesAlg.IV)) + Environment.NewLine;
+                    encrypted += Convert.ToBase64String(EncryptStringToBytes_Aes(sReader.ReadLine(), tmp_key, aesAlg.IV, CipherMode.CBC))
+                        + Environment.NewLine;
                 }
                 sReader.Dispose();
             }
                
-
-                // Decrypt the bytes to a string.
-               //string roundtrip = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV);
-
-                //Display the original data and the decrypted data.
-                //Console.WriteLine("Original:   {0}", encrypted);
-                //Console.WriteLine("Round Trip: {0}", roundtrip);
-            
             return encrypted;
         }
         public string DecodeStr(string input, string key)
@@ -98,14 +91,50 @@ namespace Uzduotis4
                 aesAlg.IV = Convert.FromBase64String(sReader.ReadLine());
                 while (!sReader.EndOfStream)
                 {
-                    decodedString += DecryptStringFromBytes_Aes(Convert.FromBase64String(sReader.ReadLine()), tmp_key, aesAlg.IV) + Environment.NewLine;
+                    decodedString += DecryptStringFromBytes_Aes(Convert.FromBase64String(sReader.ReadLine()), tmp_key, aesAlg.IV, CipherMode.CBC)
+                        + Environment.NewLine;
                 }
                 sReader.Dispose(); 
             }
             return decodedString;
             //return DecryptStringFromBytes_Aes(input, myAes.Key, myAes.IV);
         }
-        private byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
+        public string PwEncryptor(string pw, string key)
+        {
+            string encrypted = null;
+            using (Aes aesAlg = Aes.Create())
+            {
+                int ksize = aesAlg.KeySize / 8;
+                byte[] tmp_key = new byte[ksize];
+                var tmp = Encoding.ASCII.GetBytes(key, 0, key.Length);
+                for (var i = 0; i < ksize && i < tmp.Length; ++i)
+                {
+                    tmp_key[i] = tmp[i];
+                }
+                aesAlg.Mode = CipherMode.ECB;
+                aesAlg.Padding = PaddingMode.Zeros;
+               
+                encrypted = Convert.ToBase64String(EncryptStringToBytes_Aes(pw, tmp_key, aesAlg.IV, CipherMode.ECB));
+            }
+            return encrypted;
+        }
+        public string PwDecryptor(string enc_pw, string key)
+        {
+            string decodedString = null;
+            using (Aes aesAlg = Aes.Create())
+            {
+                int ksize = aesAlg.KeySize / 8;
+                byte[] tmp_key = new byte[ksize];
+                var tmp = Encoding.ASCII.GetBytes(key, 0, key.Length);
+                for (var i = 0; i < ksize && i < tmp.Length; ++i)
+                {
+                    tmp_key[i] = tmp[i];
+                }
+                decodedString = DecryptStringFromBytes_Aes(Convert.FromBase64String(enc_pw), tmp_key, aesAlg.IV, CipherMode.ECB);
+            }
+            return decodedString;
+        }
+            private byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV, CipherMode mode)
         {
             // Check arguments.
             if (plainText == null || plainText.Length <= 0)
@@ -120,7 +149,7 @@ namespace Uzduotis4
             // with the specified key and IV.
             using (Aes aesAlg = Aes.Create())
             {
-                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Mode = mode;
                 aesAlg.Padding = PaddingMode.Zeros;
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
@@ -143,7 +172,7 @@ namespace Uzduotis4
             return encrypted;
         }
 
-        private string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
+        private string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV, CipherMode mode)
         {
             // Check arguments.
             if (cipherText == null || cipherText.Length <= 0)
@@ -161,7 +190,7 @@ namespace Uzduotis4
             // with the specified key and IV.
             using (Aes aesAlg = Aes.Create())
             {
-                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Mode = mode;
                 aesAlg.Padding = PaddingMode.Zeros;
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;

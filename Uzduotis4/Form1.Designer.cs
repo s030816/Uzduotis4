@@ -215,6 +215,7 @@ namespace Uzduotis4
             this.listBoxMain.RowTemplate.Height = 25;
             this.listBoxMain.Size = new System.Drawing.Size(450, 219);
             this.listBoxMain.TabIndex = 6;
+            this.listBoxMain.SelectionChanged += new System.EventHandler(this.DataGridView_SelectionChanged);
             // 
             // name_col
             // 
