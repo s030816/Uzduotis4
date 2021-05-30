@@ -41,7 +41,6 @@ namespace Uzduotis4
             }
             if(!ValidateBase64(hashedpw.Split('?')[0]))
             {
-                System.Windows.Forms.MessageBox.Show("Gotcha");
                 return false;
             }
             return Pbkdf2Function(pw, Convert.FromBase64String(hashedpw.Split('?')[0])) == hashedpw;
